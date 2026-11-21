@@ -1,0 +1,232 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const videos = [
+  {
+    id: 'S0O2DTl1QkU',
+    title: 'Independence Day Celebration — North East India',
+    date: '15 August 2026',
+    location: 'North East India',
+    description:
+      'A glimpse into the Independence Day celebration we conducted in a remote village in North East India — bringing the spirit of the tricolour and the values of our constitution to the communities we serve.',
+    featured: true,
+  },
+];
+
+const featured = videos.find((v) => v.featured) ?? videos[0];
+const more = videos.filter((v) => v !== featured);
+---
+
+<Layout
+  title="Media — Brihati Reforms Foundation"
+  description="Watch videos from our programmes, events, and community engagement across India."
+  image={`https://img.youtube.com/vi/${featured.id}/maxresdefault.jpg`}
+>
+  <PageHero
+    eyebrow="Watch Our Work"
+    title="Scenes from the field."
+    lede="Videos from our programmes, events, and community engagement. See the people and the places that shape the foundation's work."
+  />
+
+  <section class="featured-sec">
+    <div class="container">
+      <div class="featured">
+        <div class="player">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${featured.id}?rel=0`}
+            title={featured.title}
+            loading="lazy"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="featured-meta">
+          <span class="eyebrow">Featured</span>
+          <h2>{featured.title}</h2>
+          <div class="meta-row">
+            <span class="meta-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              {featured.date}
+            </span>
+            <span class="meta-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              {featured.location}
+            </span>
+          </div>
+          <p>{featured.description}</p>
+          <a
+            href={`https://youtu.be/${featured.id}`}
+            target="_blank"
+            rel="noopener"
+            class="btn btn-ghost"
+          >
+            Watch on YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {more.length > 0 && (
+    <section class="more-sec">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">More Videos</span>
+          <h2>From our archive.</h2>
+        </div>
+        <div class="grid">
+          {more.map((v) => (
+            <a class="card" href={`https://youtu.be/${v.id}`} target="_blank" rel="noopener">
+              <div class="thumb">
+                <img
+                  src={`https://img.youtube.com/vi/${v.id}/hqdefault.jpg`}
+                  alt={v.title}
+                  loading="lazy"
+                />
+                <span class="play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </div>
+              <div class="card-body">
+                <strong>{v.title}</strong>
+                <span class="muted">{v.date} · {v.location}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="coming-sec">
+    <div class="container coming-inner">
+      <span class="eyebrow">Coming Soon</span>
+      <h2>More stories from the ground.</h2>
+      <p>
+        We're documenting more of our programmes, events, and community engagement. Check back here, or <a href="/contact/">get in touch</a> if you'd like to be notified when new videos go up.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .featured-sec { background: var(--color-bg); }
+  .featured {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: #000;
+    box-shadow: var(--shadow-md);
+  }
+  .player iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .featured-meta h2 { margin-bottom: 18px; }
+  .meta-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--color-ink-soft);
+  }
+  .meta-chip svg { width: 14px; height: 14px; color: var(--color-accent); }
+
+  .featured-meta p { font-size: 1.02rem; margin-bottom: 24px; }
+
+  .more-sec { background: var(--color-bg-alt); }
+  .section-head { max-width: 680px; margin: 0 auto 48px; text-align: center; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); color: inherit; }
+  .thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #000;
+  }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(0,0,0,0.3));
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+  }
+  .play svg {
+    width: 56px;
+    height: 56px;
+    background: var(--color-accent);
+    padding: 12px 10px 12px 14px;
+    border-radius: 50%;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  }
+  .card:hover .play { opacity: 1; }
+  .card-body { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 4px; }
+  .card-body strong {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+  .card-body .muted { font-size: 0.85rem; color: var(--color-ink-muted); }
+
+  .coming-sec { background: var(--color-bg); }
+  .coming-inner { max-width: 640px; text-align: center; margin: 0 auto; }
+
+  @media (max-width: 880px) {
+    .featured { grid-template-columns: 1fr; gap: 32px; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
