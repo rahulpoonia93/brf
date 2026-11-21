@@ -1,0 +1,447 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const focusAreas = [
+  { title: 'Equality', desc: 'Dismantling caste hierarchy and building a society rooted in equal dignity.' },
+  { title: 'Education', desc: 'An educated, well-informed mind is the most powerful tool against discrimination.' },
+  { title: 'Environment', desc: 'A healthy planet is foundational to a healthy, just society.' },
+  { title: 'Energy',      desc: 'Access to clean, reliable energy as a basic enabler of human progress.' },
+  { title: 'Empowerment', desc: 'Giving marginalized communities the voice, tools, and agency to lead change.' },
+  { title: 'Health',      desc: 'Equitable access to healthcare for every community, regardless of birth.' },
+  { title: 'Happiness',   desc: 'A dignified, discrimination-free life — the ultimate measure of our work.' },
+];
+
+const inspirations = [
+  { name: 'Dr. B. R. Ambedkar', role: 'Architect of the Indian Constitution', img: '/images/ambedkar.png' },
+  { name: 'Mahatma Gandhi',     role: 'Leader of India’s independence movement', img: '/images/Gandhi.png' },
+  { name: 'Jyotirao Phule',     role: 'Social reformer and anti-caste pioneer', img: '/images/Phule.png' },
+  { name: 'Subhas Chandra Bose', role: 'Freedom fighter and nationalist leader', img: '/images/netaji.png' },
+];
+---
+
+<Layout
+  title="Brihati Reforms Foundation — Toward an Egalitarian Society"
+  description="BRF works to end caste-based discrimination and advance human rights for marginalized communities through education, awareness, and empowerment."
+>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow">Brihati Reforms Foundation</span>
+        <h1>Building an India where <em>birth</em> never decides a person's worth.</h1>
+        <p class="lede">
+          We work to eradicate caste-based discrimination and advance human rights for Dalits and other marginalized
+          communities — through education, awareness, and tireless on-ground effort.
+        </p>
+        <div class="hero-actions">
+          <a href="/donate/" class="btn btn-accent">Support Our Work</a>
+          <a href="/about/" class="btn btn-light">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- MISSION / INTRO -->
+  <section class="mission">
+    <div class="container mission-grid">
+      <div>
+        <span class="eyebrow">Our Mission</span>
+        <h2>A holistic push toward an egalitarian society.</h2>
+        <p>
+          The caste system has shaped Indian society for centuries. Dismantling it takes more than policy — it
+          demands a long, patient effort across education, awareness, empowerment, and community building.
+        </p>
+        <p>
+          BRF was founded with that long view. We believe real, durable change comes from informed minds, equitable
+          access to opportunity, and the dignity that every human being is owed.
+        </p>
+        <a href="/about/" class="btn btn-ghost">About the Foundation</a>
+      </div>
+      <div class="mission-image">
+        <img src="/images/humanrights.png" alt="Human rights illustration" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 Es GRID -->
+  <section class="focus">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What We Work On</span>
+        <h2>Seven pillars of a just society.</h2>
+        <p class="section-sub">
+          Every programme we run connects back to these seven interlinked areas — because an egalitarian society
+          cannot be built one dimension at a time.
+        </p>
+      </div>
+
+      <div class="focus-grid">
+        {focusAreas.map((area, i) => (
+          <article class="focus-card">
+            <span class="focus-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{area.title}</h3>
+            <p>{area.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S NEW -->
+  <section class="whats-new">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Our Work</span>
+        <h2>Programmes driving the change.</h2>
+      </div>
+
+      <div class="new-grid">
+        <article class="new-card feature">
+          <img src="/images/students.png" alt="Students supported by BRF" loading="lazy" />
+          <div class="new-body">
+            <h3>Education &amp; Awareness</h3>
+            <p>
+              From student support to community awareness drives — education sits at the heart of everything we do.
+              We believe knowledge is the most powerful tool to end discrimination of every kind.
+            </p>
+            <a href="/programmes/" class="link-arrow">Explore programmes →</a>
+          </div>
+        </article>
+
+        <article class="new-card">
+          <img src="/images/castelessindiabooksmall.png" alt="Casteless India book" loading="lazy" />
+          <div class="new-body">
+            <h3>Casteless India</h3>
+            <p>
+              A book by our founder W. S. Poonia that lays out how caste operates in modern society — and a vision
+              for how to truly move beyond it.
+            </p>
+            <a href="/inspiration/" class="link-arrow">Read our inspiration →</a>
+          </div>
+        </article>
+
+        <article class="new-card">
+          <img src="/images/pressconference.jpg" alt="Press conference" loading="lazy" />
+          <div class="new-body">
+            <h3>Advocacy &amp; Outreach</h3>
+            <p>
+              Press engagement, community meetings, and dialogue with leaders — carrying the message to the people
+              who can help turn it into real change on the ground.
+            </p>
+            <a href="/obligation/" class="link-arrow">Our obligation →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSPIRATION -->
+  <section class="inspiration">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Standing on Their Shoulders</span>
+        <h2>Guided by thinkers who shaped modern India.</h2>
+      </div>
+
+      <div class="insp-grid">
+        {inspirations.map((p) => (
+          <figure class="insp-card">
+            <img src={p.img} alt={p.name} loading="lazy" />
+            <figcaption>
+              <strong>{p.name}</strong>
+              <span>{p.role}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATE CTA BAND -->
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <span class="eyebrow light">Stand With Us</span>
+        <h2>Your support fuels the work.</h2>
+        <p>
+          Every contribution — small or large — helps us run programmes, publish resources, and reach communities
+          that need it most.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a href="/donate/" class="btn btn-accent">Donate Now</a>
+        <a href="/contact/" class="btn btn-light">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 80px 0;
+    color: #fff;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(201,123,47,0.35), transparent 55%),
+      radial-gradient(ellipse at 80% 80%, rgba(45,42,107,0.5), transparent 55%),
+      linear-gradient(135deg, #1e1b4b 0%, #2a2560 55%, #3a2e5c 100%);
+    z-index: 0;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
+    background-size: 24px 24px;
+    opacity: 0.6;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-copy { max-width: 820px; }
+  .hero .eyebrow { color: var(--color-accent-soft); }
+  .hero h1 {
+    color: #fff;
+    font-weight: 400;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--color-accent-soft);
+    font-weight: 500;
+  }
+  .lede {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.86);
+    max-width: 640px;
+    margin-top: 1.25em;
+    margin-bottom: 2em;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .hero-scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  .hero-scroll span {
+    display: block;
+    width: 24px;
+    height: 40px;
+    border: 2px solid rgba(255,255,255,0.45);
+    border-radius: 14px;
+    position: relative;
+  }
+  .hero-scroll span::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 8px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.75);
+    animation: scroll 1.6s ease-in-out infinite;
+  }
+  @keyframes scroll {
+    0%, 100% { transform: translate(-50%, 0); opacity: 1; }
+    60%      { transform: translate(-50%, 14px); opacity: 0; }
+    61%      { transform: translate(-50%, 0); opacity: 0; }
+  }
+
+  /* MISSION */
+  .mission { background: var(--color-bg); }
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .mission-image img {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+  }
+
+  /* SECTION HEADS */
+  .section-head {
+    max-width: 680px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--color-ink-muted);
+  }
+
+  /* FOCUS GRID */
+  .focus { background: var(--color-bg-alt); }
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .focus-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .focus-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-accent-soft);
+  }
+  .focus-num {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+  }
+  .focus-card h3 { margin-bottom: 8px; font-size: 1.25rem; }
+  .focus-card p { font-size: 0.95rem; margin: 0; }
+  .focus-grid > :last-child:nth-child(4n - 3) { grid-column: span 1; }
+
+  /* Place the 7th card neatly: 4+3 layout with last row spanning */
+  @media (min-width: 981px) {
+    .focus-grid { grid-template-columns: repeat(12, 1fr); }
+    .focus-card { grid-column: span 3; }
+    .focus-card:nth-child(5) { grid-column: 2 / span 3; }
+    .focus-card:nth-child(6) { grid-column: span 3; }
+    .focus-card:nth-child(7) { grid-column: span 3; }
+  }
+
+  /* WHAT'S NEW */
+  .whats-new { background: var(--color-bg); }
+  .new-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 24px;
+  }
+  .new-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .new-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .new-card img {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    width: 100%;
+  }
+  .new-card.feature img { aspect-ratio: 4 / 3; }
+  .new-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .new-body h3 { margin: 0; }
+  .link-arrow {
+    margin-top: auto;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    letter-spacing: 0.01em;
+  }
+  .link-arrow:hover { color: var(--color-accent); }
+
+  /* INSPIRATION */
+  .inspiration { background: var(--color-bg-alt); }
+  .insp-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .insp-card {
+    margin: 0;
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .insp-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .insp-card img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 100%;
+    background: var(--color-bg-alt);
+  }
+  .insp-card figcaption {
+    padding: 18px 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .insp-card strong {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+  .insp-card span {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #2d2a6b 100%);
+    color: #fff;
+    padding: 72px 0;
+    margin-top: 0;
+  }
+  .cta-band h2 { color: #fff; }
+  .cta-band p { color: rgba(255,255,255,0.82); max-width: 560px; margin-bottom: 0; }
+  .eyebrow.light { color: var(--color-accent-soft); }
+  .cta-inner {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .cta-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 980px) {
+    .mission-grid { grid-template-columns: 1fr; gap: 48px; }
+    .focus-grid { grid-template-columns: repeat(2, 1fr); }
+    .new-grid { grid-template-columns: 1fr 1fr; }
+    .new-card.feature { grid-column: 1 / -1; }
+    .insp-grid { grid-template-columns: repeat(2, 1fr); }
+    .cta-inner { grid-template-columns: 1fr; gap: 24px; }
+    .cta-actions { justify-content: flex-start; }
+  }
+  @media (max-width: 560px) {
+    .focus-grid { grid-template-columns: 1fr; }
+    .new-grid { grid-template-columns: 1fr; }
+    .hero { min-height: 72vh; }
+    .lede { font-size: 1.05rem; }
+  }
+</style>

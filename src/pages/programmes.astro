@@ -1,0 +1,255 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const lakhimpurImages = [
+  '/images/lakhimpur/image1.jpg',
+  '/images/lakhimpur/image2.jpg',
+  '/images/lakhimpur/image3.jpg',
+  '/images/lakhimpur/image4.jpg',
+];
+
+const autoImages = ['/images/auto1.jpg', '/images/auto3.jpg'];
+
+const books = [
+  {
+    title: 'Casteless India',
+    language: 'English',
+    image: '/images/castelessindiabooksmall.png',
+    url: 'https://www.amazon.in/Casteless-India-Wazir-Singh-Poonia/dp/1685096212',
+  },
+  {
+    title: 'Jati Viheen Bharat',
+    language: 'Hindi',
+    image: '/images/jativiheenbharatsmall.png',
+    url: 'https://www.amazon.in/Jaativihin-Bharat-Ek-Vaastavikta-%E0%A4%B5%E0%A4%BE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A4%B5%E0%A4%BF%E0%A4%95%E0%A4%A4%E0%A4%BE/dp/B0B7478WM9',
+  },
+];
+---
+
+<Layout title="Our Programmes — Brihati Reforms Foundation">
+  <PageHero
+    eyebrow="On The Ground"
+    title="Programmes driving the change."
+    lede="From rural schools in Assam to engagement with Parliament — a look at the work we carry out, and the people it has reached."
+  />
+
+  <!-- LAKHIMPUR -->
+  <section class="programme">
+    <div class="container">
+      <div class="prog-head">
+        <span class="eyebrow">Education Drive</span>
+        <h2>Distribution drive in Anganwadis — Lakhimpur, Assam</h2>
+      </div>
+      <div class="prog-body">
+        <p>
+          As part of our ongoing commitment to promoting education in rural communities, we organised a distribution drive in Anganwadi schools in Lakhimpur district, Assam — providing essential learning materials such as books, pencils, erasers, and notebooks to children in the village.
+        </p>
+        <p>
+          The joy on the faces of young students as they received their kits was truly heartwarming. For many, this was their first time holding new stationery items — simple tools that can spark a lifelong journey of learning. By equipping children with these basic resources, we hope to remove small but significant barriers to education and encourage consistent school attendance.
+        </p>
+        <p>
+          This initiative is a step toward creating equal learning opportunities and empowering the next generation with knowledge and confidence.
+        </p>
+
+        <div class="gallery">
+          {lakhimpurImages.map((img) => (
+            <figure><img src={img} alt="Lakhimpur education drive" loading="lazy" /></figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARENESS -->
+  <section class="programme alt">
+    <div class="container">
+      <div class="prog-head">
+        <span class="eyebrow">Advocacy</span>
+        <h2>Awareness Programme</h2>
+      </div>
+      <div class="prog-body">
+        <p>
+          The foundation is extensively involved in spreading awareness to combat caste-based hierarchy in our country. We have taken multiple initiatives in this regard. These are some of the key highlights.
+        </p>
+
+        <div class="initiative">
+          <h3>Press engagement</h3>
+          <p>
+            We have held multiple press conferences to collaborate with media on this issue. The media — being the fourth pillar of democracy — helps carry this message to the masses.
+          </p>
+          <figure class="single"><img src="/images/pressconference.jpg" alt="Press conference" loading="lazy" /></figure>
+        </div>
+
+        <div class="initiative">
+          <h3>Grassroots outreach via local auto rickshaws</h3>
+          <p>We used local auto rickshaws to advertise our message directly to common people in their daily commute.</p>
+          <div class="gallery two">
+            {autoImages.map((img) => (
+              <figure><img src={img} alt="Auto rickshaw campaign" loading="lazy" /></figure>
+            ))}
+          </div>
+        </div>
+
+        <div class="initiative">
+          <h3>Memorandum shared with Hon'ble MP Kumari Shelja</h3>
+          <p>We shared our complete memorandum with Hon'ble Member of Parliament Smt. Kumari Shelja.</p>
+          <figure class="single"><img src="/images/KumariShelja.jpg" alt="Meeting with Kumari Shelja" loading="lazy" /></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKS -->
+  <section class="programme">
+    <div class="container">
+      <div class="prog-head">
+        <span class="eyebrow">Publication</span>
+        <h2>Two books to fight caste in India</h2>
+      </div>
+      <div class="prog-body">
+        <p>
+          Our director Shri Wazir Singh Poonia has published two books to spread the message of eradicating the evil of caste from the nation — one in English and one in Hindi.
+        </p>
+
+        <div class="books">
+          {books.map((b) => (
+            <a class="book-card" href={b.url} target="_blank" rel="noopener">
+              <img src={b.image} alt={b.title} loading="lazy" />
+              <div class="book-meta">
+                <span class="role">{b.language}</span>
+                <strong>{b.title}</strong>
+                <span class="link-arrow">Buy on Amazon →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPRESENTATION -->
+  <section class="programme alt">
+    <div class="container">
+      <div class="prog-head">
+        <span class="eyebrow">Policy Advocacy</span>
+        <h2>Representation to the Ministry of Social Justice &amp; Empowerment</h2>
+      </div>
+      <div class="prog-body">
+        <p>
+          We have written to all Hon'ble Members of Parliament as well as the Ministry of Social Justice and Empowerment, urging them to take up the initiative of eradicating caste from our country on a war footing — so the dream our freedom fighters held of an egalitarian India may become reality.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .programme { background: var(--color-bg); }
+  .programme.alt { background: var(--color-bg-alt); }
+
+  .prog-head {
+    max-width: 780px;
+    margin: 0 auto 36px;
+    text-align: center;
+  }
+
+  .prog-body {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .prog-body p { font-size: 1.02rem; line-height: 1.75; }
+
+  .initiative {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid var(--color-border);
+  }
+  .initiative h3 { margin-bottom: 10px; }
+
+  .gallery {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .gallery.two { grid-template-columns: repeat(2, 1fr); }
+  .gallery figure {
+    margin: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    background: var(--color-surface);
+  }
+  .gallery img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .gallery figure:hover img { transform: scale(1.03); }
+
+  figure.single {
+    margin: 24px 0 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  figure.single img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .books {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .book-card {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 20px;
+    padding: 24px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    color: inherit;
+  }
+  .book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-accent-soft);
+    color: inherit;
+  }
+  .book-card img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+  }
+  .book-meta { display: flex; flex-direction: column; gap: 6px; justify-content: center; }
+  .book-meta .role {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .book-meta strong {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+  .link-arrow { margin-top: 8px; font-size: 0.9rem; font-weight: 600; color: var(--color-primary); }
+
+  @media (max-width: 700px) {
+    .gallery { grid-template-columns: 1fr; }
+    .books { grid-template-columns: 1fr; }
+    .book-card { grid-template-columns: 110px 1fr; padding: 18px; }
+  }
+</style>

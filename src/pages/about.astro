@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const pillars = [
+  'Equality', 'Education', 'Environment', 'Energy', 'Empowerment', 'Health', 'Happiness',
+];
+
+const directors = [
+  {
+    name: 'W. S. Poonia',
+    role: 'Founder & Director',
+    image: '/images/wspooniasmall.jpg',
+    bio: [
+      `An engineer-turned-lawyer, Wazir Singh Poonia has broad and extensive experience across many walks of life. He graduated as a Textile Engineer (B.Text) from T.I.T, Bhiwani (Haryana) in 1980. After a successful career as an engineer he ventured into textile business, having completed his P.G.D.B.A from Annamalai University. His keen interest in socio-political affairs inspired him to study law, and in his pursuit of excellence he went on to complete his master's in law (LL.M) from Kurukshetra University. He currently practices law in the District Court, Hisar.`,
+      `He founded Brihati Reforms Foundation with the objective of establishing an egalitarian society. Throughout his life he witnessed how caste shapes the socio-political fabric of society. Inspired by Dr. B. R. Ambedkar's life and his seminal work "Annihilation of Caste," he spent years studying how caste operates across different segments of society and theorising how a casteless society could be built. The result was his book Casteless India, published in 2021. Following its success, he began engaging with leaders across society to carry the message forward — which led, ultimately, to the founding of Brihati Reforms Foundation.`,
+    ],
+  },
+  {
+    name: 'Neelam Poonia',
+    role: 'Co-Founder',
+    image: '/images/neelampooniasmall.jpg',
+    bio: [
+      `Neelam Poonia is a B.A B.Ed graduate from Kurukshetra University, Haryana. She has been associated with education and social work from the very beginning of her career. The idea of working in a cause as socially important as caste abolition resonated deeply with her, and she decided to join and contribute actively as part of the foundation.`,
+    ],
+  },
+];
+---
+
+<Layout title="About Us — Brihati Reforms Foundation">
+  <PageHero
+    eyebrow="About the Foundation"
+    title="A long, patient effort toward a just society."
+    lede="Brihati Reforms Foundation works to end caste-based discrimination and advance the dignity of every Indian — through education, awareness, and sustained community engagement."
+  />
+
+  <section class="mission-sec">
+    <div class="container mission-grid">
+      <div>
+        <span class="eyebrow">Our Mission</span>
+        <h2>Building an egalitarian society, holistically.</h2>
+        <p>
+          The foundation is driven by the mission to establish an egalitarian society. This is work on many fronts, pursued together rather than in isolation. These are the areas we are committed to working on with urgency and care.
+        </p>
+      </div>
+      <ul class="pillars">
+        {pillars.map((p, i) => (
+          <li>
+            <span class="pillar-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="pillar-name">{p}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="directors-sec">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Leadership</span>
+        <h2>The people behind the work.</h2>
+      </div>
+
+      <div class="directors">
+        {directors.map((d) => (
+          <article class="director">
+            <div class="director-photo">
+              <img src={d.image} alt={d.name} loading="lazy" />
+            </div>
+            <div class="director-body">
+              <span class="role">{d.role}</span>
+              <h3>{d.name}</h3>
+              {d.bio.map((para) => <p>{para}</p>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .mission-sec { background: var(--color-bg); }
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .pillars {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .pillars li {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 18px 22px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .pillars li:hover { transform: translateX(3px); border-color: var(--color-accent-soft); }
+  .pillar-num {
+    font-family: var(--font-serif);
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .pillar-name {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    color: var(--color-primary);
+  }
+
+  .directors-sec { background: var(--color-bg-alt); }
+  .section-head { max-width: 680px; margin: 0 auto 56px; text-align: center; }
+
+  .directors { display: grid; gap: 40px; }
+  .director {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 36px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    box-shadow: var(--shadow-sm);
+  }
+  .director-photo img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+  .director-body .role {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 8px;
+  }
+  .director-body h3 {
+    font-size: 1.75rem;
+    margin-bottom: 18px;
+  }
+  .director-body p {
+    text-align: justify;
+    line-height: 1.75;
+  }
+
+  @media (max-width: 880px) {
+    .mission-grid { grid-template-columns: 1fr; gap: 40px; }
+    .director { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
+    .director-photo img { max-width: 220px; }
+  }
+  @media (max-width: 500px) {
+    .pillars { grid-template-columns: 1fr; }
+  }
+</style>
